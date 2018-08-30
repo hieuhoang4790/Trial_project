@@ -1,0 +1,1014 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180830 22:33:08.016" generator="Robot 3.0.4 (Python 2.7.15 on win32)">
+<suite source="D:\trial_project\Tests\HeaderTestSuite.robot" id="s1" name="HeaderTestSuite">
+<kw type="setup" name="AccessToPage">
+<doc>This keywork is used for creating web driver and access to Page</doc>
+<arguments>
+<arg>${Homepage.URL}</arg>
+</arguments>
+<kw name="Create Webdriver" library="Selenium2Library">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+</arguments>
+<msg timestamp="20180830 22:33:08.114" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" endtime="20180830 22:33:10.099" starttime="20180830 22:33:08.114"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:10.100" level="INFO">Opening url 'https://www.airbnb.com/?locale=en'</msg>
+<status status="PASS" endtime="20180830 22:33:14.446" starttime="20180830 22:33:10.099"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20180830 22:33:15.565" starttime="20180830 22:33:14.446"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:15.565" starttime="20180830 22:33:08.113"></status>
+</kw>
+<test id="s1-t1" name="ClickLogo">
+<kw type="setup" name="BackToPage">
+<doc>This keywork is used for going back to page if currrent url is not expected page</doc>
+<arguments>
+<arg>${Homepage.URL}</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser URL.</doc>
+<assign>
+<var>${CurrentURL}</var>
+</assign>
+<msg timestamp="20180830 22:33:16.286" level="INFO">${CurrentURL} = https://www.airbnb.com/?locale=en</msg>
+<status status="PASS" endtime="20180830 22:33:16.286" starttime="20180830 22:33:15.569"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${URL}' != '${CurrentURL}'</arg>
+<arg>Go to</arg>
+<arg>${URL}</arg>
+<arg>ELSE</arg>
+<arg>Reload Page</arg>
+</arguments>
+<kw name="Reload Page" library="Selenium2Library">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" endtime="20180830 22:33:18.511" starttime="20180830 22:33:16.286"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:18.511" starttime="20180830 22:33:16.286"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:18.511" starttime="20180830 22:33:15.567"></status>
+</kw>
+<kw name="CheckEventAfterClickHeaderElement">
+<doc>This keywork is used for checking event after clicking Header elements</doc>
+<arguments>
+<arg>ButtonMainNavigationMenu</arg>
+<arg>${ExpectedResultHeader.ClickLogo_ExpectedURL}</arg>
+</arguments>
+<kw name="Get Current Browser" library="Base.GeneralFunction">
+<assign>
+<var>${driver}</var>
+</assign>
+<msg timestamp="20180830 22:33:18.513" level="INFO">${driver} = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="05be8da37f99050ee3f316a9d0b356cc")&gt;</msg>
+<status status="PASS" endtime="20180830 22:33:18.513" starttime="20180830 22:33:18.512"></status>
+</kw>
+<kw name="Click Header Element" library="Homepage">
+<arguments>
+<arg>${driver}</arg>
+<arg>${HeaderElementName}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:22.107" level="INFO">clickButtonMainNavigationMenu:Passed</msg>
+<status status="PASS" endtime="20180830 22:33:22.108" starttime="20180830 22:33:18.513"></status>
+</kw>
+<kw name="Get Window Handles" library="Selenium2Library">
+<doc>Return all current window handles as a list.</doc>
+<assign>
+<var>${Windows_Handles_List}</var>
+</assign>
+<msg timestamp="20180830 22:33:22.111" level="INFO">${Windows_Handles_List} = [u'CDwindow-B9FC8FD5C190CB922D3EF5A701F6A883']</msg>
+<status status="PASS" endtime="20180830 22:33:22.111" starttime="20180830 22:33:22.108"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${Windows_Handles_List}</arg>
+</arguments>
+<assign>
+<var>${Number_Windows}</var>
+</assign>
+<msg timestamp="20180830 22:33:22.111" level="INFO">Length is 1</msg>
+<msg timestamp="20180830 22:33:22.112" level="INFO">${Number_Windows} = 1</msg>
+<status status="PASS" endtime="20180830 22:33:22.112" starttime="20180830 22:33:22.111"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>Select window</arg>
+<arg>NEW</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:22.112" starttime="20180830 22:33:22.112"></status>
+</kw>
+<kw name="Get Current URL" library="Base.GeneralFunction">
+<arguments>
+<arg>${driver}</arg>
+</arguments>
+<assign>
+<var>${Actual_URL}</var>
+</assign>
+<msg timestamp="20180830 22:33:22.118" level="INFO">${Actual_URL} = https://www.airbnb.com/?logo=1</msg>
+<status status="PASS" endtime="20180830 22:33:22.118" starttime="20180830 22:33:22.112"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${HeaderElementName}' == 'ButtonMainNavigationMenu' or '${HeaderElementName}' == 'AEarnCredit'</arg>
+<arg>Should Be Equal As Strings</arg>
+<arg>${Actual_URL}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+<arg>ELSE</arg>
+<arg>Base.GeneralFunction.isDisplayPopUp</arg>
+<arg>${driver}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${Actual_URL}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:22.119" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'str'&gt;</msg>
+<status status="PASS" endtime="20180830 22:33:22.119" starttime="20180830 22:33:22.119"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:22.119" starttime="20180830 22:33:22.118"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>close window</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:22.120" starttime="20180830 22:33:22.119"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>select window</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:22.120" starttime="20180830 22:33:22.120"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:22.120" starttime="20180830 22:33:18.512"></status>
+</kw>
+<doc>Test case ID: Header_001
+
+This test case is used for checking "click Logo"
+
+Steps:
+1. Go to Homepage
+
+2. Click Logo
+
+Expected result: The URL is "https://www.airbnb.com/?logo=1"</doc>
+<timeout value="3 minutes"></timeout>
+<status status="PASS" endtime="20180830 22:33:22.120" critical="yes" starttime="20180830 22:33:15.565"></status>
+</test>
+<test id="s1-t2" name="ClickBecomeAHost">
+<kw type="setup" name="BackToPage">
+<doc>This keywork is used for going back to page if currrent url is not expected page</doc>
+<arguments>
+<arg>${Homepage.URL}</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser URL.</doc>
+<assign>
+<var>${CurrentURL}</var>
+</assign>
+<msg timestamp="20180830 22:33:22.126" level="INFO">${CurrentURL} = https://www.airbnb.com/?logo=1</msg>
+<status status="PASS" endtime="20180830 22:33:22.126" starttime="20180830 22:33:22.123"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${URL}' != '${CurrentURL}'</arg>
+<arg>Go to</arg>
+<arg>${URL}</arg>
+<arg>ELSE</arg>
+<arg>Reload Page</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:22.127" level="INFO">Opening url 'https://www.airbnb.com/?locale=en'</msg>
+<status status="PASS" endtime="20180830 22:33:28.256" starttime="20180830 22:33:22.126"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:28.256" starttime="20180830 22:33:22.126"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:28.256" starttime="20180830 22:33:22.123"></status>
+</kw>
+<kw name="CheckEventAfterClickHeaderElement">
+<doc>This keywork is used for checking event after clicking Header elements</doc>
+<arguments>
+<arg>ButtonBecomeAHost</arg>
+<arg>UlBecomeAHostPopUp</arg>
+</arguments>
+<kw name="Get Current Browser" library="Base.GeneralFunction">
+<assign>
+<var>${driver}</var>
+</assign>
+<msg timestamp="20180830 22:33:28.258" level="INFO">${driver} = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="05be8da37f99050ee3f316a9d0b356cc")&gt;</msg>
+<status status="PASS" endtime="20180830 22:33:28.258" starttime="20180830 22:33:28.257"></status>
+</kw>
+<kw name="Click Header Element" library="Homepage">
+<arguments>
+<arg>${driver}</arg>
+<arg>${HeaderElementName}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:28.408" level="INFO">clickButtonBecomeAHost:Passed</msg>
+<status status="PASS" endtime="20180830 22:33:28.408" starttime="20180830 22:33:28.258"></status>
+</kw>
+<kw name="Get Window Handles" library="Selenium2Library">
+<doc>Return all current window handles as a list.</doc>
+<assign>
+<var>${Windows_Handles_List}</var>
+</assign>
+<msg timestamp="20180830 22:33:28.411" level="INFO">${Windows_Handles_List} = [u'CDwindow-B9FC8FD5C190CB922D3EF5A701F6A883']</msg>
+<status status="PASS" endtime="20180830 22:33:28.411" starttime="20180830 22:33:28.408"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${Windows_Handles_List}</arg>
+</arguments>
+<assign>
+<var>${Number_Windows}</var>
+</assign>
+<msg timestamp="20180830 22:33:28.412" level="INFO">Length is 1</msg>
+<msg timestamp="20180830 22:33:28.412" level="INFO">${Number_Windows} = 1</msg>
+<status status="PASS" endtime="20180830 22:33:28.412" starttime="20180830 22:33:28.411"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>Select window</arg>
+<arg>NEW</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:28.412" starttime="20180830 22:33:28.412"></status>
+</kw>
+<kw name="Get Current URL" library="Base.GeneralFunction">
+<arguments>
+<arg>${driver}</arg>
+</arguments>
+<assign>
+<var>${Actual_URL}</var>
+</assign>
+<msg timestamp="20180830 22:33:28.416" level="INFO">${Actual_URL} = https://www.airbnb.com/?locale=en</msg>
+<status status="PASS" endtime="20180830 22:33:28.416" starttime="20180830 22:33:28.413"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${HeaderElementName}' == 'ButtonMainNavigationMenu' or '${HeaderElementName}' == 'AEarnCredit'</arg>
+<arg>Should Be Equal As Strings</arg>
+<arg>${Actual_URL}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+<arg>ELSE</arg>
+<arg>Base.GeneralFunction.isDisplayPopUp</arg>
+<arg>${driver}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+</arguments>
+<kw name="Is Display Pop Up" library="Base.GeneralFunction">
+<arguments>
+<arg>${driver}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:28.440" level="INFO">isDisplayPopUp:Passed</msg>
+<status status="PASS" endtime="20180830 22:33:28.440" starttime="20180830 22:33:28.418"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:28.440" starttime="20180830 22:33:28.417"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>close window</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:28.440" starttime="20180830 22:33:28.440"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>select window</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:28.440" starttime="20180830 22:33:28.440"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:28.441" starttime="20180830 22:33:28.257"></status>
+</kw>
+<doc>Test case ID: Header_002
+
+This test case is used for checking "click Become A Host"
+
+Steps:
+1. Go to Homepage
+
+2. Click Become A Host
+
+Expected result: "Become A Host" pop-up will be displayed</doc>
+<timeout value="3 minutes"></timeout>
+<status status="PASS" endtime="20180830 22:33:28.441" critical="yes" starttime="20180830 22:33:22.122"></status>
+</test>
+<test id="s1-t3" name="ClickEarnCredit">
+<kw type="setup" name="BackToPage">
+<doc>This keywork is used for going back to page if currrent url is not expected page</doc>
+<arguments>
+<arg>${Homepage.URL}</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser URL.</doc>
+<assign>
+<var>${CurrentURL}</var>
+</assign>
+<msg timestamp="20180830 22:33:28.447" level="INFO">${CurrentURL} = https://www.airbnb.com/?locale=en</msg>
+<status status="PASS" endtime="20180830 22:33:28.448" starttime="20180830 22:33:28.444"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${URL}' != '${CurrentURL}'</arg>
+<arg>Go to</arg>
+<arg>${URL}</arg>
+<arg>ELSE</arg>
+<arg>Reload Page</arg>
+</arguments>
+<kw name="Reload Page" library="Selenium2Library">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" endtime="20180830 22:33:30.592" starttime="20180830 22:33:28.448"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:30.592" starttime="20180830 22:33:28.448"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:30.592" starttime="20180830 22:33:28.443"></status>
+</kw>
+<kw name="CheckEventAfterClickHeaderElement">
+<doc>This keywork is used for checking event after clicking Header elements</doc>
+<arguments>
+<arg>AEarnCredit</arg>
+<arg>${ExpectedResultHeader.ClickEarnCredit_ExpectedURL}</arg>
+</arguments>
+<kw name="Get Current Browser" library="Base.GeneralFunction">
+<assign>
+<var>${driver}</var>
+</assign>
+<msg timestamp="20180830 22:33:30.594" level="INFO">${driver} = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="05be8da37f99050ee3f316a9d0b356cc")&gt;</msg>
+<status status="PASS" endtime="20180830 22:33:30.594" starttime="20180830 22:33:30.593"></status>
+</kw>
+<kw name="Click Header Element" library="Homepage">
+<arguments>
+<arg>${driver}</arg>
+<arg>${HeaderElementName}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:30.760" level="INFO">clickAEarnCredit:Passed</msg>
+<status status="PASS" endtime="20180830 22:33:30.760" starttime="20180830 22:33:30.594"></status>
+</kw>
+<kw name="Get Window Handles" library="Selenium2Library">
+<doc>Return all current window handles as a list.</doc>
+<assign>
+<var>${Windows_Handles_List}</var>
+</assign>
+<msg timestamp="20180830 22:33:30.762" level="INFO">${Windows_Handles_List} = [u'CDwindow-B9FC8FD5C190CB922D3EF5A701F6A883', u'CDwindow-3341C4E23A00DCDCA6263CEABD7FE08D']</msg>
+<status status="PASS" endtime="20180830 22:33:30.762" starttime="20180830 22:33:30.760"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${Windows_Handles_List}</arg>
+</arguments>
+<assign>
+<var>${Number_Windows}</var>
+</assign>
+<msg timestamp="20180830 22:33:30.763" level="INFO">Length is 2</msg>
+<msg timestamp="20180830 22:33:30.763" level="INFO">${Number_Windows} = 2</msg>
+<status status="PASS" endtime="20180830 22:33:30.763" starttime="20180830 22:33:30.762"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>Select window</arg>
+<arg>NEW</arg>
+</arguments>
+<kw name="Select Window" library="Selenium2Library">
+<doc>Selects browser window matching ``locator``.</doc>
+<arguments>
+<arg>NEW</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:30.774" starttime="20180830 22:33:30.765"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:30.774" starttime="20180830 22:33:30.764"></status>
+</kw>
+<kw name="Get Current URL" library="Base.GeneralFunction">
+<arguments>
+<arg>${driver}</arg>
+</arguments>
+<assign>
+<var>${Actual_URL}</var>
+</assign>
+<msg timestamp="20180830 22:33:32.053" level="INFO">${Actual_URL} = https://www.airbnb.com/login?redirect_params[action]=index&amp;redirect_params[controller]=referrals&amp;redirect_params[r]=56</msg>
+<status status="PASS" endtime="20180830 22:33:32.053" starttime="20180830 22:33:30.774"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${HeaderElementName}' == 'ButtonMainNavigationMenu' or '${HeaderElementName}' == 'AEarnCredit'</arg>
+<arg>Should Be Equal As Strings</arg>
+<arg>${Actual_URL}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+<arg>ELSE</arg>
+<arg>Base.GeneralFunction.isDisplayPopUp</arg>
+<arg>${driver}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${Actual_URL}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:32.055" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'str'&gt;</msg>
+<status status="PASS" endtime="20180830 22:33:32.056" starttime="20180830 22:33:32.054"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:32.056" starttime="20180830 22:33:32.053"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>close window</arg>
+</arguments>
+<kw name="Close Window" library="Selenium2Library">
+<doc>Closes currently opened pop-up window.</doc>
+<status status="PASS" endtime="20180830 22:33:32.087" starttime="20180830 22:33:32.059"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:32.087" starttime="20180830 22:33:32.056"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>select window</arg>
+</arguments>
+<kw name="Select Window" library="Selenium2Library">
+<doc>Selects browser window matching ``locator``.</doc>
+<status status="PASS" endtime="20180830 22:33:32.098" starttime="20180830 22:33:32.087"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:32.098" starttime="20180830 22:33:32.087"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:32.099" starttime="20180830 22:33:30.592"></status>
+</kw>
+<doc>Test case ID: Header_003
+
+This test case is used for checking "click Earn Credit"
+
+Steps:
+1. Go to Homepage
+
+2. Click Earn Credit
+
+Expected result: New tab appear with "https://www.airbnb.com/login?redirect_params[action]=index&amp;redirect_params[controller]=referrals&amp;redirect_params[r]=56"</doc>
+<timeout value="3 minutes"></timeout>
+<status status="PASS" endtime="20180830 22:33:32.099" critical="yes" starttime="20180830 22:33:28.443"></status>
+</test>
+<test id="s1-t4" name="ClickHelp">
+<kw type="setup" name="BackToPage">
+<doc>This keywork is used for going back to page if currrent url is not expected page</doc>
+<arguments>
+<arg>${Homepage.URL}</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser URL.</doc>
+<assign>
+<var>${CurrentURL}</var>
+</assign>
+<msg timestamp="20180830 22:33:32.106" level="INFO">${CurrentURL} = https://www.airbnb.com/?locale=en</msg>
+<status status="PASS" endtime="20180830 22:33:32.106" starttime="20180830 22:33:32.103"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${URL}' != '${CurrentURL}'</arg>
+<arg>Go to</arg>
+<arg>${URL}</arg>
+<arg>ELSE</arg>
+<arg>Reload Page</arg>
+</arguments>
+<kw name="Reload Page" library="Selenium2Library">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" endtime="20180830 22:33:34.534" starttime="20180830 22:33:32.107"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:34.534" starttime="20180830 22:33:32.107"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:34.534" starttime="20180830 22:33:32.102"></status>
+</kw>
+<kw name="CheckEventAfterClickHeaderElement">
+<doc>This keywork is used for checking event after clicking Header elements</doc>
+<arguments>
+<arg>ButtonHelp</arg>
+<arg>DivHelpPopUp</arg>
+</arguments>
+<kw name="Get Current Browser" library="Base.GeneralFunction">
+<assign>
+<var>${driver}</var>
+</assign>
+<msg timestamp="20180830 22:33:34.535" level="INFO">${driver} = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="05be8da37f99050ee3f316a9d0b356cc")&gt;</msg>
+<status status="PASS" endtime="20180830 22:33:34.535" starttime="20180830 22:33:34.535"></status>
+</kw>
+<kw name="Click Header Element" library="Homepage">
+<arguments>
+<arg>${driver}</arg>
+<arg>${HeaderElementName}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:34.674" level="INFO">clickButtonHelp:Passed</msg>
+<status status="PASS" endtime="20180830 22:33:34.674" starttime="20180830 22:33:34.535"></status>
+</kw>
+<kw name="Get Window Handles" library="Selenium2Library">
+<doc>Return all current window handles as a list.</doc>
+<assign>
+<var>${Windows_Handles_List}</var>
+</assign>
+<msg timestamp="20180830 22:33:34.676" level="INFO">${Windows_Handles_List} = [u'CDwindow-B9FC8FD5C190CB922D3EF5A701F6A883']</msg>
+<status status="PASS" endtime="20180830 22:33:34.676" starttime="20180830 22:33:34.674"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${Windows_Handles_List}</arg>
+</arguments>
+<assign>
+<var>${Number_Windows}</var>
+</assign>
+<msg timestamp="20180830 22:33:34.677" level="INFO">Length is 1</msg>
+<msg timestamp="20180830 22:33:34.678" level="INFO">${Number_Windows} = 1</msg>
+<status status="PASS" endtime="20180830 22:33:34.678" starttime="20180830 22:33:34.676"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>Select window</arg>
+<arg>NEW</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:34.678" starttime="20180830 22:33:34.678"></status>
+</kw>
+<kw name="Get Current URL" library="Base.GeneralFunction">
+<arguments>
+<arg>${driver}</arg>
+</arguments>
+<assign>
+<var>${Actual_URL}</var>
+</assign>
+<msg timestamp="20180830 22:33:34.682" level="INFO">${Actual_URL} = https://www.airbnb.com/?locale=en</msg>
+<status status="PASS" endtime="20180830 22:33:34.682" starttime="20180830 22:33:34.678"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${HeaderElementName}' == 'ButtonMainNavigationMenu' or '${HeaderElementName}' == 'AEarnCredit'</arg>
+<arg>Should Be Equal As Strings</arg>
+<arg>${Actual_URL}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+<arg>ELSE</arg>
+<arg>Base.GeneralFunction.isDisplayPopUp</arg>
+<arg>${driver}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+</arguments>
+<kw name="Is Display Pop Up" library="Base.GeneralFunction">
+<arguments>
+<arg>${driver}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:34.738" level="INFO">isDisplayPopUp:Passed</msg>
+<status status="PASS" endtime="20180830 22:33:34.738" starttime="20180830 22:33:34.683"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:34.738" starttime="20180830 22:33:34.682"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>close window</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:34.738" starttime="20180830 22:33:34.738"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>select window</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:34.739" starttime="20180830 22:33:34.738"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:34.739" starttime="20180830 22:33:34.534"></status>
+</kw>
+<doc>Test case ID: Header_004
+
+This test case is used for checking "click Help"
+
+Steps:
+1. Go to Homepage
+
+2. Click Help
+
+Expected result: "Help" pop-up will be displayed</doc>
+<timeout value="3 minutes"></timeout>
+<status status="PASS" endtime="20180830 22:33:34.739" critical="yes" starttime="20180830 22:33:32.101"></status>
+</test>
+<test id="s1-t5" name="ClickSignUp">
+<kw type="setup" name="BackToPage">
+<doc>This keywork is used for going back to page if currrent url is not expected page</doc>
+<arguments>
+<arg>${Homepage.URL}</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser URL.</doc>
+<assign>
+<var>${CurrentURL}</var>
+</assign>
+<msg timestamp="20180830 22:33:34.745" level="INFO">${CurrentURL} = https://www.airbnb.com/?locale=en</msg>
+<status status="PASS" endtime="20180830 22:33:34.745" starttime="20180830 22:33:34.742"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${URL}' != '${CurrentURL}'</arg>
+<arg>Go to</arg>
+<arg>${URL}</arg>
+<arg>ELSE</arg>
+<arg>Reload Page</arg>
+</arguments>
+<kw name="Reload Page" library="Selenium2Library">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" endtime="20180830 22:33:37.584" starttime="20180830 22:33:34.745"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:37.584" starttime="20180830 22:33:34.745"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:37.584" starttime="20180830 22:33:34.741"></status>
+</kw>
+<kw name="CheckEventAfterClickHeaderElement">
+<doc>This keywork is used for checking event after clicking Header elements</doc>
+<arguments>
+<arg>ASignup</arg>
+<arg>DivSignUpPopUp</arg>
+</arguments>
+<kw name="Get Current Browser" library="Base.GeneralFunction">
+<assign>
+<var>${driver}</var>
+</assign>
+<msg timestamp="20180830 22:33:37.585" level="INFO">${driver} = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="05be8da37f99050ee3f316a9d0b356cc")&gt;</msg>
+<status status="PASS" endtime="20180830 22:33:37.585" starttime="20180830 22:33:37.585"></status>
+</kw>
+<kw name="Click Header Element" library="Homepage">
+<arguments>
+<arg>${driver}</arg>
+<arg>${HeaderElementName}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:38.805" level="INFO">clickASignup:Passed</msg>
+<status status="PASS" endtime="20180830 22:33:38.805" starttime="20180830 22:33:37.585"></status>
+</kw>
+<kw name="Get Window Handles" library="Selenium2Library">
+<doc>Return all current window handles as a list.</doc>
+<assign>
+<var>${Windows_Handles_List}</var>
+</assign>
+<msg timestamp="20180830 22:33:38.807" level="INFO">${Windows_Handles_List} = [u'CDwindow-B9FC8FD5C190CB922D3EF5A701F6A883']</msg>
+<status status="PASS" endtime="20180830 22:33:38.807" starttime="20180830 22:33:38.805"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${Windows_Handles_List}</arg>
+</arguments>
+<assign>
+<var>${Number_Windows}</var>
+</assign>
+<msg timestamp="20180830 22:33:38.807" level="INFO">Length is 1</msg>
+<msg timestamp="20180830 22:33:38.808" level="INFO">${Number_Windows} = 1</msg>
+<status status="PASS" endtime="20180830 22:33:38.808" starttime="20180830 22:33:38.807"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>Select window</arg>
+<arg>NEW</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:38.808" starttime="20180830 22:33:38.808"></status>
+</kw>
+<kw name="Get Current URL" library="Base.GeneralFunction">
+<arguments>
+<arg>${driver}</arg>
+</arguments>
+<assign>
+<var>${Actual_URL}</var>
+</assign>
+<msg timestamp="20180830 22:33:38.811" level="INFO">${Actual_URL} = https://www.airbnb.com/?locale=en</msg>
+<status status="PASS" endtime="20180830 22:33:38.811" starttime="20180830 22:33:38.808"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${HeaderElementName}' == 'ButtonMainNavigationMenu' or '${HeaderElementName}' == 'AEarnCredit'</arg>
+<arg>Should Be Equal As Strings</arg>
+<arg>${Actual_URL}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+<arg>ELSE</arg>
+<arg>Base.GeneralFunction.isDisplayPopUp</arg>
+<arg>${driver}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+</arguments>
+<kw name="Is Display Pop Up" library="Base.GeneralFunction">
+<arguments>
+<arg>${driver}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:38.836" level="INFO">isDisplayPopUp:Passed</msg>
+<status status="PASS" endtime="20180830 22:33:38.836" starttime="20180830 22:33:38.812"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:38.836" starttime="20180830 22:33:38.811"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>close window</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:38.837" starttime="20180830 22:33:38.836"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>select window</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:38.837" starttime="20180830 22:33:38.837"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:38.837" starttime="20180830 22:33:37.584"></status>
+</kw>
+<doc>Test case ID: Header_005
+
+This test case is used for checking "click Sign Up"
+
+Steps:
+1. Go to Homepage
+
+2. Click Sign Up
+
+Expected result: "Sign Up" pop-up will be displayed</doc>
+<timeout value="3 minutes"></timeout>
+<status status="PASS" endtime="20180830 22:33:38.838" critical="yes" starttime="20180830 22:33:34.741"></status>
+</test>
+<test id="s1-t6" name="ClickLogIn">
+<kw type="setup" name="BackToPage">
+<doc>This keywork is used for going back to page if currrent url is not expected page</doc>
+<arguments>
+<arg>${Homepage.URL}</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser URL.</doc>
+<assign>
+<var>${CurrentURL}</var>
+</assign>
+<msg timestamp="20180830 22:33:38.843" level="INFO">${CurrentURL} = https://www.airbnb.com/?locale=en</msg>
+<status status="PASS" endtime="20180830 22:33:38.843" starttime="20180830 22:33:38.841"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${URL}' != '${CurrentURL}'</arg>
+<arg>Go to</arg>
+<arg>${URL}</arg>
+<arg>ELSE</arg>
+<arg>Reload Page</arg>
+</arguments>
+<kw name="Reload Page" library="Selenium2Library">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" endtime="20180830 22:33:40.850" starttime="20180830 22:33:38.844"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:40.850" starttime="20180830 22:33:38.844"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:40.850" starttime="20180830 22:33:38.840"></status>
+</kw>
+<kw name="CheckEventAfterClickHeaderElement">
+<doc>This keywork is used for checking event after clicking Header elements</doc>
+<arguments>
+<arg>ButtonLogin</arg>
+<arg>DivLogInPopUp</arg>
+</arguments>
+<kw name="Get Current Browser" library="Base.GeneralFunction">
+<assign>
+<var>${driver}</var>
+</assign>
+<msg timestamp="20180830 22:33:40.852" level="INFO">${driver} = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="05be8da37f99050ee3f316a9d0b356cc")&gt;</msg>
+<status status="PASS" endtime="20180830 22:33:40.852" starttime="20180830 22:33:40.851"></status>
+</kw>
+<kw name="Click Header Element" library="Homepage">
+<arguments>
+<arg>${driver}</arg>
+<arg>${HeaderElementName}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:41.779" level="INFO">clickButtonLogin:Passed</msg>
+<status status="PASS" endtime="20180830 22:33:41.779" starttime="20180830 22:33:40.852"></status>
+</kw>
+<kw name="Get Window Handles" library="Selenium2Library">
+<doc>Return all current window handles as a list.</doc>
+<assign>
+<var>${Windows_Handles_List}</var>
+</assign>
+<msg timestamp="20180830 22:33:41.782" level="INFO">${Windows_Handles_List} = [u'CDwindow-B9FC8FD5C190CB922D3EF5A701F6A883']</msg>
+<status status="PASS" endtime="20180830 22:33:41.782" starttime="20180830 22:33:41.779"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${Windows_Handles_List}</arg>
+</arguments>
+<assign>
+<var>${Number_Windows}</var>
+</assign>
+<msg timestamp="20180830 22:33:41.783" level="INFO">Length is 1</msg>
+<msg timestamp="20180830 22:33:41.783" level="INFO">${Number_Windows} = 1</msg>
+<status status="PASS" endtime="20180830 22:33:41.783" starttime="20180830 22:33:41.782"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>Select window</arg>
+<arg>NEW</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:41.783" starttime="20180830 22:33:41.783"></status>
+</kw>
+<kw name="Get Current URL" library="Base.GeneralFunction">
+<arguments>
+<arg>${driver}</arg>
+</arguments>
+<assign>
+<var>${Actual_URL}</var>
+</assign>
+<msg timestamp="20180830 22:33:41.787" level="INFO">${Actual_URL} = https://www.airbnb.com/?locale=en</msg>
+<status status="PASS" endtime="20180830 22:33:41.787" starttime="20180830 22:33:41.783"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${HeaderElementName}' == 'ButtonMainNavigationMenu' or '${HeaderElementName}' == 'AEarnCredit'</arg>
+<arg>Should Be Equal As Strings</arg>
+<arg>${Actual_URL}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+<arg>ELSE</arg>
+<arg>Base.GeneralFunction.isDisplayPopUp</arg>
+<arg>${driver}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+</arguments>
+<kw name="Is Display Pop Up" library="Base.GeneralFunction">
+<arguments>
+<arg>${driver}</arg>
+<arg>${ExpectedResultOrPopUpName}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:41.814" level="INFO">isDisplayPopUp:Passed</msg>
+<status status="PASS" endtime="20180830 22:33:41.814" starttime="20180830 22:33:41.788"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:41.814" starttime="20180830 22:33:41.788"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>close window</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:41.815" starttime="20180830 22:33:41.814"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${Number_Windows} &gt; 1</arg>
+<arg>select window</arg>
+</arguments>
+<status status="PASS" endtime="20180830 22:33:41.815" starttime="20180830 22:33:41.815"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:41.816" starttime="20180830 22:33:40.851"></status>
+</kw>
+<doc>Test case ID: Header_006
+
+This test case is used for checking "click Log In"
+
+Steps:
+1. Go to Homepage
+
+2. Click Log In
+
+Expected result: "Log In" pop-up will be displayed</doc>
+<timeout value="3 minutes"></timeout>
+<status status="PASS" endtime="20180830 22:33:41.816" critical="yes" starttime="20180830 22:33:38.840"></status>
+</test>
+<test id="s1-t7" name="CheckLogoContent">
+<kw type="setup" name="BackToPage">
+<doc>This keywork is used for going back to page if currrent url is not expected page</doc>
+<arguments>
+<arg>${Homepage.URL}</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser URL.</doc>
+<assign>
+<var>${CurrentURL}</var>
+</assign>
+<msg timestamp="20180830 22:33:41.824" level="INFO">${CurrentURL} = https://www.airbnb.com/?locale=en</msg>
+<status status="PASS" endtime="20180830 22:33:41.824" starttime="20180830 22:33:41.820"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${URL}' != '${CurrentURL}'</arg>
+<arg>Go to</arg>
+<arg>${URL}</arg>
+<arg>ELSE</arg>
+<arg>Reload Page</arg>
+</arguments>
+<kw name="Reload Page" library="Selenium2Library">
+<doc>Simulates user reloading page.</doc>
+<status status="PASS" endtime="20180830 22:33:44.452" starttime="20180830 22:33:41.825"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:44.452" starttime="20180830 22:33:41.824"></status>
+</kw>
+<status status="PASS" endtime="20180830 22:33:44.452" starttime="20180830 22:33:41.819"></status>
+</kw>
+<kw name="Get Current Browser" library="Base.GeneralFunction">
+<assign>
+<var>${driver}</var>
+</assign>
+<msg timestamp="20180830 22:33:44.453" level="INFO">${driver} = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="05be8da37f99050ee3f316a9d0b356cc")&gt;</msg>
+<status status="PASS" endtime="20180830 22:33:44.453" starttime="20180830 22:33:44.452"></status>
+</kw>
+<kw name="Get Structure Of Logo" library="Homepage">
+<arguments>
+<arg>${driver}</arg>
+</arguments>
+<assign>
+<var>${StructureLogo}</var>
+</assign>
+<msg timestamp="20180830 22:33:44.483" level="INFO">getStructureOfLogo:Passed</msg>
+<msg timestamp="20180830 22:33:44.483" level="INFO">${StructureLogo} = m499.3 736.7c-51-64-81-120.1-91-168.1-10-39-6-70 11-93 18-27 45-40 80-40s62 13 80 40c17 23 21 54 11 93-11 49-41 105-91 168.1zm362.2 43c-7 47-39 86-83 105-85 37-169.1-22-241.1-102 119.1-149.1 141.1-265...</msg>
+<status status="PASS" endtime="20180830 22:33:44.483" starttime="20180830 22:33:44.453"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${StructureLogo}</arg>
+<arg>${ExpectedResultHeader.ExpectedStructureLogo}</arg>
+</arguments>
+<msg timestamp="20180830 22:33:44.484" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'str'&gt;</msg>
+<status status="PASS" endtime="20180830 22:33:44.484" starttime="20180830 22:33:44.484"></status>
+</kw>
+<doc>Test case ID: Header_007
+
+This test case is used for checking Structure of Logo
+
+Steps:
+1. Go to Homepage
+
+2. Read Structure of Logo
+
+Expected result: Acutal Structure is same as expected Structure of Logo</doc>
+<timeout value="3 minutes"></timeout>
+<status status="PASS" endtime="20180830 22:33:44.485" critical="yes" starttime="20180830 22:33:41.819"></status>
+</test>
+<kw type="teardown" name="Close All Browsers" library="Selenium2Library">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" endtime="20180830 22:33:46.683" starttime="20180830 22:33:44.487"></status>
+</kw>
+<doc>29.08.2018
+This suite is used for testing Header</doc>
+<status status="PASS" endtime="20180830 22:33:46.683" starttime="20180830 22:33:08.017"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="7">Critical Tests</stat>
+<stat fail="0" pass="7">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="HeaderTestSuite" pass="7">HeaderTestSuite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

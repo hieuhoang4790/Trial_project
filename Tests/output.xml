@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180830 00:54:25.220" generator="Robot 3.0.4 (Python 2.7.15 on win32)">
+<suite source="D:\trial_project\Tests\HeaderTestSuite.robot" id="s1" name="HeaderTestSuite">
+<kw type="setup" name="InitializeWebdriver">
+<doc>This keywork is used for creating web driver</doc>
+<kw name="Create Webdriver" library="Selenium2Library">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+</arguments>
+<msg timestamp="20180830 00:54:25.327" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" endtime="20180830 00:54:27.374" starttime="20180830 00:54:25.327"></status>
+</kw>
+<status status="PASS" endtime="20180830 00:54:27.374" starttime="20180830 00:54:25.327"></status>
+</kw>
+<test id="s1-t1" name="ClickLogo">
+<kw type="setup" name="Base.GeneralFunction.AccessToPage">
+<arguments>
+<arg>${Homepage.URL}</arg>
+</arguments>
+<msg timestamp="20180830 00:54:27.379" level="FAIL">No keyword with name 'Base.GeneralFunction.AccessToPage' found.</msg>
+<status status="FAIL" endtime="20180830 00:54:27.379" starttime="20180830 00:54:27.379"></status>
+</kw>
+<doc>Test case ID: Header_001
+
+This test case is used for checking "click Logo"
+
+Steps:
+1. Go to Homepage
+
+2. Click Logo
+
+Expected result: The URL is "https://www.airbnb.com/?logo=1"</doc>
+<status status="FAIL" endtime="20180830 00:54:27.379" critical="yes" starttime="20180830 00:54:27.374">Setup failed:
+No keyword with name 'Base.GeneralFunction.AccessToPage' found.</status>
+</test>
+<kw type="teardown" name="Close All Browsers" library="Selenium2Library">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" endtime="20180830 00:54:29.491" starttime="20180830 00:54:27.383"></status>
+</kw>
+<doc>29.08.2018
+This suite is used for testing Header</doc>
+<status status="FAIL" endtime="20180830 00:54:29.491" starttime="20180830 00:54:25.221"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="HeaderTestSuite" pass="0">HeaderTestSuite</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20180830 00:54:25.319" level="ERROR">Error in file 'D:\trial_project\Tests\HeaderTestSuite.robot': Importing test library 'D:\trial_project\Resources\Base.py' failed: SyntaxError: invalid syntax (BaseLocators.py, line 6)
+Traceback (most recent call last):
+  File "D:\trial_project\Resources\Base.py", line 6, in &lt;module&gt;
+    from Locators.BaseLocators import HeaderLocators, SignUpPopUpLocators, LogInPopUpLocators, BecomeAHostPopUpLocators, HelpPopUpLocators
+PYTHONPATH:
+  D:\trial_project
+  D:\trial_project\Resources
+  C:\WINDOWS\SYSTEM32\python27.zip
+  c:\python27\DLLs
+  c:\python27\lib
+  c:\python27\lib\plat-win
+  c:\python27\lib\lib-tk
+  c:\python27
+  c:\python27\lib\site-packages
+  c:\python27\lib\site-packages\wx-2.8-msw-unicode</msg>
+<msg timestamp="20180830 00:54:25.324" level="ERROR">Error in file 'D:\trial_project\Tests\HeaderTestSuite.robot': Importing test library 'D:\trial_project\Resources\Homepage.py' failed: SyntaxError: invalid syntax (BaseLocators.py, line 6)
+Traceback (most recent call last):
+  File "D:\trial_project\Resources\Homepage.py", line 2, in &lt;module&gt;
+    from Resources.Base import Headers,SignUpPopUp,LoginPopUp,BecomeAHostPopUp,HelpPopUp
+  File "D:\trial_project\Resources\Base.py", line 6, in &lt;module&gt;
+    from Locators.BaseLocators import HeaderLocators, SignUpPopUpLocators, LogInPopUpLocators, BecomeAHostPopUpLocators, HelpPopUpLocators
+PYTHONPATH:
+  D:\trial_project
+  D:\trial_project\Resources
+  C:\WINDOWS\SYSTEM32\python27.zip
+  c:\python27\DLLs
+  c:\python27\lib
+  c:\python27\lib\plat-win
+  c:\python27\lib\lib-tk
+  c:\python27
+  c:\python27\lib\site-packages
+  c:\python27\lib\site-packages\wx-2.8-msw-unicode</msg>
+</errors>
+</robot>
